@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0b0d0c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+<title>ToneMaster by MG:SOUNDS</title>
+<meta name="description" content="ToneMaster V2 by MG:SOUNDS: sampled instruments, offline beat packs, layered recording and MP3 exports.">
+<meta property="og:title" content="ToneMaster V2 by MG:SOUNDS">
+<meta property="og:description" content="Play your tones, arrange beat loops and record layered performances.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="brand"><img src="icons/icon-192.png" alt="" width="30" height="30"><div><b>ToneMaster</b><small>by MG:SOUNDS</small></div></div>
+    <nav id="tabs">
+      <button data-tab="play" class="on">Play</button><button data-tab="library">TONES</button><button data-tab="beats">BEATS</button><button data-tab="settings">APP</button><button data-tab="owner" id="ownerTab" hidden>Owner</button>
+    </nav>
+    <div class="pills">
+      <button class="pill" id="midiPill"><i class="led"></i><span id="midiText">MIDI: checking…</span></button>
+      <button class="pill" id="licPill"><span id="licText">Licence</span></button>
+    </div>
+  </header>
+
+  <!-- PLAY -->
+  <main id="tab-play" class="tab on">
+    <section class="bar">
+      <div class="seg" id="modeSeg"></div>
+      <label class="inl">Split <b id="splitVal"></b><input type="range" id="splitSlider" min="24" max="96" step="1"></label>
+      <button class="btn toggle" id="sustainBtn">Sustain pedal: ON</button>
+      <button class="btn danger" id="panicBtn">All notes off</button>
+      <span class="voices" id="voices">0 voices</span>
+    </section>
+    <section class="layers" id="layers"></section>
+    <section class="ctrls" id="ctrls"></section>
+    <section class="kb-wrap" id="kbWrap">
+      <div class="kb-bar"><button class="btn sm" id="kbDown">◀ Octave</button><span id="kbRange"></span><button class="btn sm" id="kbUp">Octave ▶</button><button class="btn sm" id="kbHide">Hide keys</button></div>
+      <div class="kb" id="kb"></div>
+    </section>
+    <button class="btn sm" id="kbShow" hidden>Show on-screen keys</button>
+  </main>
+
+  <!-- LIBRARY -->
+  <main id="tab-library" class="tab">
+    <section class="bar"><button class="btn primary big" id="storeBtn">⬇ Download tones</button><button class="btn" id="importBtn">＋ Import ZIP from phone</button>
+      <span id="libSummary" class="muted"></span><span class="grow"></span><button class="btn" id="verifyBtn">Verify library</button></section>
+    <section class="grid" id="libGrid"></section>
+  </main>
+
+  <!-- SETTINGS -->
+  <main id="tab-beats" class="tab"><div id="beatsBody"></div></main>
+  <main id="tab-settings" class="tab"><div class="cols" id="settingsBody"></div></main>
+
+  <!-- OWNER -->
+  <main id="tab-owner" class="tab"><div class="cols" id="ownerBody"></div></main>
+</div>
+
+<!-- Instrument picker -->
+<div class="modal" id="pickModal" hidden><div class="sheet"><h2 id="pickTitle">Choose instrument</h2><div class="grid" id="pickGrid"></div><div class="row end"><button class="btn" data-close>Close</button></div></div></div>
+
+<!-- Tone store (the only part of the app that uses internet) -->
+<div class="modal" id="storeModal" hidden><div class="sheet wide">
+  <h2>Download tones</h2>
+  <p class="muted">Uses internet only while this window is open. Downloaded tones are stored on this phone and play offline.</p>
+  <div id="storeBody"></div>
+  <div class="row end"><button class="btn" id="storeRefresh">Check again</button><button class="btn" data-close>Close</button></div>
+</div></div>
+
+<!-- Import -->
+<div class="modal" id="importModal" hidden><div class="sheet wide">
+  <h2>Import tones</h2>
+  <div id="impStep1"><p class="muted">Select one or more ZIP files that contain WAV samples. Files are scanned first; nothing is stored until you confirm.</p>
+    <input type="file" id="zipInput" accept=".zip,application/zip,application/x-zip-compressed" multiple hidden>
+    <div class="row"><button class="btn primary big" id="pickZips">Choose ZIP files…</button><button class="btn" data-close>Cancel</button></div></div>
+  <div id="impBody"></div>
+</div></div>
+
+<!-- Activation -->
+<div class="modal solid" id="actModal" hidden><div class="sheet wide">
+  <h2>Activate ToneMaster</h2>
+  <p class="muted" id="actPrice"></p>
+  <label>Your Device ID <small class="muted">(send this to MG:SOUNDS when you buy)</small></label>
+  <div class="row"><code class="devid" id="devId"></code><button class="btn sm" id="copyId">Copy</button><button class="btn sm" id="reqBtn">Request licence</button></div>
+  <label>Licence code</label><textarea id="licInput" rows="3" placeholder="TM1.…" spellcheck="false"></textarea>
+  <div class="row"><button class="btn primary" id="actBtn">Activate</button><button class="btn" id="licFileBtn">Load licence file…</button><input type="file" id="licFile" accept=".txt,.tmlicence,text/plain" hidden><span class="grow"></span><button class="btn" id="actSkip">Continue without activating</button></div>
+  <p id="actMsg" class="msg"></p>
+  <details><summary>Changed phone? Reinstalled?</summary><p class="muted">Licences are tied to one device. Send MG:SOUNDS the new Device ID shown above together with your proof of purchase and a replacement licence will be issued for the new device.</p></details>
+</div></div>
+
+<div id="toast" hidden></div>
+<div class="modal" id="exportModal" hidden><div class="sheet"><h2>Export MP3</h2><p class="msg"></p><div class="prog"><i></i></div><div class="row end"><button class="btn" data-close>Close</button></div></div></div>
+<script src="js/lame.js"></script>
+<script src="js/tonemaster.bundle.js"></script>
+</body>
+</html>

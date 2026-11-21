@@ -1,0 +1,11 @@
+# ToneMaster V2 delivery
+- [x] Connect the supplied Main App to Beat Studio, tone catalogue and APP updates; preserve licensing and tones.
+- [x] Add native Android verified, user-confirmed update installation source (compilation/device testing still pending).
+- [x] Automated security/audio-model checks: 18 tests passed; preview compilation OK.
+- [ ] Browser end-to-end playback, project reopening, MP3 and offline verification — blocked by exhausted credits.
+- [x] Package current clean source and deployment/test instructions for delivery.
+- [x] Configure confirmed-account allowlist for manqobagininda982@gmail.com.
+- [ ] Authenticated administrator upload/publish/install test — awaiting account creation/confirmation and available credits.
+- [ ] Old database record import — awaiting database export.
+- [ ] Android device installation test — awaiting signed APK and device.
+- [ ] Firebase storage — awaiting secure credentials; private Lovable Cloud storage is the implemented alternative.

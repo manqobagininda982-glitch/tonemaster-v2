@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ToneMaster Admin · MG:SOUNDS</title>
+<meta name="description" content="MG:SOUNDS administrator panel for validating and publishing ToneMaster packs and app releases.">
+<meta property="og:title" content="ToneMaster Admin · MG:SOUNDS">
+<meta property="og:description" content="Secure ToneMaster pack and release management.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/png;base64,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">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js"></script>
+<style>
+:root{--bg:#0a0c0b;--bg2:#101412;--panel:#151a17;--line:#26302b;--text:#e8eeea;--mut:#8a978f;--g:#2bd97c;--gd:#0f3d29;--red:#e5534b;--amber:#e3b341}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:18px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+header{display:flex;align-items:center;gap:12px}header b{font-size:20px}header small{color:var(--mut);display:block}.grow{flex:1}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+h2{font-size:17px}h3{font-size:15px}label{font-size:13px;color:var(--mut)}
+input,select,textarea{width:100%;background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px;font:inherit}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1;min-width:150px}
+.btn{flex:0 0 auto;min-width:0;background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px 14px;font:inherit;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--g);color:#06120b;border-color:var(--g)}.btn.danger{color:var(--red)}.btn:disabled{opacity:.5;cursor:default}
+.msg{font-size:14px;color:var(--mut)}.msg.err{color:var(--red)}.msg.ok{color:var(--g)}
+.prog{height:10px;background:#222c27;border-radius:6px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:var(--g)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:middle}th{color:var(--mut);font-weight:600}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--gd);color:var(--g)}.tag.app{background:#3a2f10;color:var(--amber)}.tag.off{background:#2a1716;color:var(--red)}
+td .btn{padding:6px 10px;font-size:13px}.hide{display:none!important}
+.tabs{display:flex;gap:6px}.tabs button.on{background:var(--gd);color:var(--g);border-color:var(--g)}
+.grid15{display:grid;grid-template-columns:repeat(15,1fr);gap:4px;max-width:560px}.grid15 span{text-align:center;font-size:12px;padding:6px 0;border-radius:6px;background:#1c2420;color:#4b5650}.grid15 span.on{background:var(--gd);color:var(--g)}
+ul.iss{margin-left:18px;font-size:13px;color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="data:image/png;base64,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" id="logo" alt="" width="40" height="40" style="border-radius:9px"><div><b>ToneMaster Admin</b><small>MG:SOUNDS · beat packs, tone packs and app updates</small></div><span class="grow"></span><span id="who" class="msg"></span><button class="btn hide" id="outBtn">Sign out</button></header>
+  <section class="box" id="authBox">
+    <h2>Administrator sign in</h2>
+    <p class="msg">Only accounts on the server-side administrator list can open this panel. Creating an account here does not make anyone an administrator.</p>
+    <div class="row"><div><label>Email</label><input id="email" type="email" autocomplete="username"></div><div><label>Password</label><input id="pw" type="password" autocomplete="current-password"></div></div>
+    <div class="row"><button class="btn primary" id="inBtn">Sign in</button><button class="btn" id="upBtn">Create account</button><button class="btn" id="resetBtn">Forgot password</button></div>
+    <p class="msg" id="authMsg"></p>
+  </section>
+
+  <div class="tabs hide" id="tabs"><button class="btn on" data-k="beat">Beat packs</button><button class="btn" data-k="tone">Tone packs</button><button class="btn" data-k="apk">App updates (APK)</button></div>
+
+  <section class="box hide" id="packUp">
+    <h2 id="packUpTitle">Upload beat pack</h2>
+    <div class="row">
+      <div><label>Name (shown in the app)</label><input id="name" placeholder="e.g. AMAPIANO VOL 1"></div>
+      <div style="max-width:120px"><label>Version</label><input id="ver" value="1"></div>
+      <div style="max-width:120px" id="bpmWrap"><label>Original BPM</label><input id="bpm" type="number" min="40" max="240" placeholder="e.g. 112"></div>
+    </div>
+    <div><label>Notes (optional)</label><input id="desc" placeholder="What is new"></div>
+    <div><label>ZIP file</label><input id="file" type="file" accept=".zip,application/zip"></div>
+    <p class="msg" id="packHelp">Beat packs: one folder per style, loops named 1–15 (e.g. <code>Groove A/3.wav</code>). Files are checked on the server: real WAV data only, no unsafe paths, size limits. Nothing is visible to users until you press Publish.</p>
+    <div class="row"><button class="btn primary" id="sendBtn">Upload and validate</button><span class="msg" id="upMsg"></span></div>
+    <div class="prog hide" id="prog"><i></i></div>
+    <div id="preview"></div>
+  </section>
+
+  <section class="box hide" id="packList">
+    <div class="row"><h2 id="listTitle">Beat packs</h2><span class="grow"></span><button class="btn" id="reload">Refresh</button></div>
+    <div style="overflow:auto"><table><thead><tr><th>Name</th><th>Version</th><th>Size</th><th>Check</th><th>Status</th><th>Downloads</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+    <p class="msg" id="listMsg"></p>
+    <input type="file" id="replFile" class="hide" accept=".zip">
+  </section>
+
+  <section class="box hide" id="apkUp">
+    <h2>Upload app update (signed APK)</h2>
+    <div class="row">
+      <div style="max-width:160px"><label>Version code (whole number, must increase)</label><input id="vcode" type="number" min="1"></div>
+      <div><label>Version name</label><input id="vname" placeholder="e.g. 2.0.1"></div>
+      <div style="max-width:120px"><label>Min Android SDK</label><input id="minsdk" type="number" value="24"></div>
+    </div>
+    <div><label>Release notes</label><textarea id="vnotes" rows="3"></textarea></div>
+    <div><label>APK file</label><input id="apkFile" type="file" accept=".apk,application/vnd.android.package-archive"></div>
+    <p class="msg">The server checks APK structure and signature presence and records its SHA-256; cryptographic signature verification happens on Android. The phone re-checks the SHA-256, package name, signing certificate and version before Android's own installer asks the user to confirm.</p>
+    <div class="row"><button class="btn primary" id="apkSend">Upload and validate</button><span class="msg" id="apkMsg"></span></div>
+    <div class="prog hide" id="apkProg"><i></i></div>
+  </section>
+
+  <section class="box hide" id="apkList">
+    <div class="row"><h2>App releases</h2><span class="grow"></span><button class="btn" id="apkReload">Refresh</button></div>
+    <div style="overflow:auto"><table><thead><tr><th>Version</th><th>Notes</th><th>Size</th><th>SHA-256</th><th>Status</th><th>Downloads</th><th></th></tr></thead><tbody id="apkRows"></tbody></table></div>
+    <p class="msg" id="apkListMsg"></p>
+  </section>
+</div>
+<script>
+const URL_ = 'https://c--0588c18c-4a14-42f9-9818-74aced8450b3-prod.lovable.cloud', KEY = 'sb_publishable_JMJF40xCLrebyQiPZ_xTpw_jEQ3PKig';
+const API = location.protocol.startsWith('http') ? location.origin : 'https://project--cf2e1702-2df4-4ce3-94bc-7e9ec1333e5e.lovable.app';
+const sb = supabase.createClient(URL_, KEY, { global: { fetch: (input, init) => { const headers = new Headers(init?.headers); if (headers.get('Authorization') === 'Bearer ' + KEY) headers.delete('Authorization'); headers.set('apikey', KEY); return fetch(input, { ...init, headers }); } } });
+const $ = s => document.querySelector(s), esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = n => n >= 1073741824 ? (n / 1073741824).toFixed(2) + ' GB' : n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round((n || 0) / 1024) + ' KB';
+const msg = (el, t, c = '') => { el.textContent = t; el.className = 'msg ' + c; };
+let session = null, packs = [], kind = 'beat';
+
+async function enter(s) {
+  session = s; if (!s) { show(false); return; }
+  try {
+    const r = await fetch(API + '/api/public/tm/admin/claim', { method: 'POST', headers: { Authorization: 'Bearer ' + s.access_token } });
+    const j = await r.json(); if (!r.ok || !j.admin) throw new Error(j.error || 'This account is not an administrator.');
+  } catch (e) { await sb.auth.signOut(); show(false); return msg($('#authMsg'), e.message, 'err'); }
+  show(true); $('#who').textContent = s.user.email; setKind(kind);
+}
+function show(admin) { $('#authBox').classList.toggle('hide', admin); $('#tabs').classList.toggle('hide', !admin); $('#outBtn').classList.toggle('hide', !admin); if (!admin) { $('#who').textContent = '';['#packUp', '#packList', '#apkUp', '#apkList'].forEach(s => $(s).classList.add('hide')); } }
+function setKind(k) {
+  kind = k; document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+  const apk = k === 'apk';['#packUp', '#packList'].forEach(s => $(s).classList.toggle('hide', apk));['#apkUp', '#apkList'].forEach(s => $(s).classList.toggle('hide', !apk));
+  if (apk) return loadReleases();
+  $('#packUpTitle').textContent = k === 'beat' ? 'Upload beat pack' : 'Upload tone pack'; $('#listTitle').textContent = k === 'beat' ? 'Beat packs' : 'Tone packs';
+  $('#bpmWrap').classList.toggle('hide', k !== 'beat');
+  $('#packHelp').innerHTML = k === 'beat' ? 'Beat packs: one folder per style, loops numbered 1–15 (e.g. <code>Groove A/3.wav</code>). The server checks real WAV data, unsafe paths and size limits. Users see nothing until you press Publish.' : 'Tone packs: WAV samples named <code>1.wav</code>, <code>2.wav</code>… or <code>… Marker #N.wav</code> (Nth semitone from the root). The server checks real WAV data before anything can be published.';
+  $('#preview').innerHTML = ''; loadList();
+}
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => setKind(b.dataset.k));
+
+$('#inBtn').onclick = async () => { msg($('#authMsg'), 'Signing in…'); const { data, error } = await sb.auth.signInWithPassword({ email: $('#email').value.trim(), password: $('#pw').value }); if (error) return msg($('#authMsg'), error.message, 'err'); msg($('#authMsg'), ''); enter(data.session); };
+$('#upBtn').onclick = async () => {
+  const email = $('#email').value.trim(), password = $('#pw').value; if (password.length < 8) return msg($('#authMsg'), 'Use a password with at least 8 characters.', 'err');
+  const { data, error } = await sb.auth.signUp({ email, password, options: { emailRedirectTo: location.href.split('#')[0] } }); if (error) return msg($('#authMsg'), error.message, 'err');
+  if (data.session) return enter(data.session); msg($('#authMsg'), 'Account created. Open the confirmation email, then sign in. Only listed administrator emails get access.', 'ok');
+};
+$('#resetBtn').onclick = async () => { const email = $('#email').value.trim(); if (!email) return msg($('#authMsg'), 'Type your email first.', 'err'); const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.href.split('#')[0] }); msg($('#authMsg'), error ? error.message : 'Password reset email sent.', error ? 'err' : 'ok'); };
+$('#outBtn').onclick = async () => { await sb.auth.signOut(); show(false); };
+sb.auth.onAuthStateChange((ev) => { if (ev === 'PASSWORD_RECOVERY') { const np = prompt('Type your new password (min 8 characters)'); if (np) sb.auth.updateUser({ password: np }).then(({ error }) => alert(error ? error.message : 'Password changed')); } });
+sb.auth.getSession().then(({ data }) => data.session && enter(data.session));
+
+async function fresh() { const { data } = await sb.auth.getSession(); session = data.session; if (!session) throw new Error('Signed out. Sign in again.'); }
+function uploadFile(path, file, onP) {
+  return new Promise((res, rej) => {
+    const x = new XMLHttpRequest(); x.open('POST', URL_ + '/storage/v1/object/incoming/' + path.split('/').map(encodeURIComponent).join('/'));
+    x.setRequestHeader('apikey', KEY); x.setRequestHeader('Authorization', 'Bearer ' + session.access_token); x.setRequestHeader('x-upsert', 'false'); x.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+    x.upload.onprogress = e => e.lengthComputable && onP(e.loaded / e.total);
+    x.onload = () => x.status < 300 ? res() : rej(new Error((() => { try { return JSON.parse(x.responseText).message } catch { return 'Upload failed (' + x.status + ')' } })()));
+    x.onerror = () => rej(new Error('Network error during upload')); x.send(file);
+  });
+}
+async function api(path, body) {
+  await fresh(); const r = await fetch(API + path, { method: 'POST', headers: { Authorization: 'Bearer ' + session.access_token, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || ('Server error ' + r.status)); return j;
+}
+const safe = s => s.replace(/[^\w.\-]+/g, '_').slice(-80);
+
+function renderReport(rep, manifest) {
+  if (!rep) return '';
+  let h = '<h3>' + (rep.ok ? '✔ Validation passed' : '✖ Validation failed — not publishable') + '</h3>';
+  if (rep.kind === 'beat' && rep.folders?.length) h += rep.folders.map(f => { const have = new Set(f.loops.map(l => l.n)); return '<div><b>' + esc(f.name) + '</b> <span class="msg">' + f.loops.length + ' loop(s)</span><div class="grid15">' + Array.from({ length: 15 }, (_, i) => '<span class="' + (have.has(i + 1) ? 'on' : '') + '">' + (i + 1) + '</span>').join('') + '</div></div>'; }).join('');
+  if (rep.kind === 'tone' && rep.tones?.length) h += '<p class="msg">' + rep.tones.length + ' valid WAV tone sample(s).</p>';
+  if (rep.issues?.length) h += '<ul class="iss">' + rep.issues.slice(0, 40).map(i => '<li>' + esc(i.file) + ': ' + esc(i.problem) + '</li>').join('') + (rep.issues.length > 40 ? '<li>…' + (rep.issues.length - 40) + ' more</li>' : '') + '</ul>';
+  if (rep.ignored?.length) h += '<p class="msg">Ignored ' + rep.ignored.length + ' non-audio file(s).</p>';
+  return h;
+}
+
+$('#sendBtn').onclick = async () => {
+  const f = $('#file').files[0], name = $('#name').value.trim(), ver = $('#ver').value.trim() || '1', out = $('#upMsg'), bar = $('#prog');
+  if (!name) return msg(out, 'Type a name.', 'err'); if (!f) return msg(out, 'Choose a ZIP file.', 'err'); if (!/\.zip$/i.test(f.name)) return msg(out, 'Packs must be a .zip file.', 'err');
+  if (f.size > 80 * 1048576) return msg(out, 'ZIP is larger than 80 MB. Split it into smaller packs.', 'err');
+  $('#sendBtn').disabled = true; bar.classList.remove('hide'); $('#preview').innerHTML = '';
+  let row = null;
+  try {
+    await fresh(); const path = kind + '/' + Date.now() + '-' + safe(f.name);
+    await uploadFile(path, f, p => { bar.firstChild.style.width = (p * 100) + '%'; msg(out, 'Uploading ' + Math.round(p * 100) + '%'); });
+    const bpm = parseFloat($('#bpm').value);
+    const ins = await sb.from('packs').insert({ kind, name: name.toUpperCase(), version: ver, description: $('#desc').value.trim(), bpm: kind === 'beat' && bpm > 0 ? bpm : null, upload_path: path, file_name: f.name, file_size: f.size, created_by: session.user.id }).select().single();
+    if (ins.error) { await sb.storage.from('incoming').remove([path]); throw ins.error; }
+    row = ins.data; msg(out, 'Checking every file on the server…');
+    const v = await api('/api/public/tm/admin/validate-pack', { id: row.id });
+    $('#preview').innerHTML = renderReport(v.report) + (v.ok ? '<div class="row"><button class="btn primary" id="pubNow">Publish ' + esc(name.toUpperCase()) + ' now</button></div>' : '');
+    if (v.ok) $('#pubNow').onclick = async () => { const { error } = await sb.from('packs').update({ published: true }).eq('id', row.id); if (error) return msg(out, error.message, 'err'); msg(out, 'Published: ' + name, 'ok'); $('#preview').innerHTML = ''; loadList(); };
+    msg(out, v.ok ? 'Validated. Review the preview, then publish.' : 'Rejected. Fix the ZIP and upload again.', v.ok ? 'ok' : 'err');
+    $('#file').value = ''; loadList();
+  } catch (e) { msg(out, e.message || String(e), 'err'); }
+  $('#sendBtn').disabled = false; setTimeout(() => { bar.classList.add('hide'); bar.firstChild.style.width = '0'; }, 800);
+};
+
+async function loadList() {
+  const { data, error } = await sb.from('packs').select('*').eq('kind', kind).order('created_at', { ascending: false });
+  if (error) return msg($('#listMsg'), error.message, 'err'); packs = data; msg($('#listMsg'), packs.length ? '' : 'Nothing uploaded yet.');
+  $('#rows').innerHTML = packs.map(p => {
+    const loops = p.kind === 'beat' ? (p.manifest?.folders || []).reduce((a, f) => a + f.loops.length, 0) : (p.manifest?.tones || []).length;
+    return `<tr data-id="${p.id}"><td><b>${esc(p.name)}</b>${p.bpm ? ' <span class="msg">' + esc(p.bpm) + ' BPM</span>' : ''}${p.description ? '<br><span class="msg">' + esc(p.description) + '</span>' : ''}</td>
+    <td>v${esc(p.version)}</td><td>${fmt(p.file_size)}</td>
+    <td>${p.status === 'validated' ? '<span class="tag">Valid · ' + loops + (p.kind === 'beat' ? ' loops' : ' tones') + '</span>' : p.status === 'rejected' ? '<span class="tag off">Rejected</span>' : '<span class="tag app">Not checked</span>'}</td>
+    <td>${p.published ? '<span class="tag">Published</span>' : '<span class="tag off">Hidden</span>'}</td><td>${p.download_count}</td>
+    <td class="row" style="flex-wrap:nowrap"><button class="btn" data-a="view">Preview</button>${p.upload_path ? '<button class="btn" data-a="check">Check</button>' : ''}<button class="btn" data-a="new">New version</button><button class="btn" data-a="vis" ${p.status !== 'validated' ? 'disabled' : ''}>${p.published ? 'Hide' : 'Publish'}</button><button class="btn danger" data-a="del">Delete</button></td></tr>`;
+  }).join('');
+}
+$('#reload').onclick = loadList;
+let replTarget = null;
+$('#rows').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return; const p = packs.find(x => x.id === b.closest('tr').dataset.id), out = $('#listMsg');
+  try {
+    await fresh();
+    if (b.dataset.a === 'view') { $('#preview').innerHTML = '<p class="msg">Preview of ' + esc(p.name) + '</p>' + (renderReport(p.validation_report) || '<p class="msg">Not checked yet.</p>'); $('#packUp').scrollIntoView({ behavior: 'smooth' }); return; }
+    if (b.dataset.a === 'check') { msg(out, 'Checking…'); const v = await api('/api/public/tm/admin/validate-pack', { id: p.id }); msg(out, v.ok ? 'Validated' : 'Rejected', v.ok ? 'ok' : 'err'); return loadList(); }
+    if (b.dataset.a === 'vis') { const { error } = await sb.from('packs').update({ published: !p.published }).eq('id', p.id); if (error) throw error; return loadList(); }
+    if (b.dataset.a === 'del') { if (!confirm('Delete "' + p.name + '" for everyone? Phones that already installed it keep it.')) return; const paths = [p.file_path].filter(Boolean); const { error } = await sb.from('packs').delete().eq('id', p.id); if (error) throw error; if (paths.length) await sb.storage.from('packs').remove(paths); if (p.upload_path) await sb.storage.from('incoming').remove([p.upload_path]); msg(out, 'Deleted ' + p.name, 'ok'); return loadList(); }
+    if (b.dataset.a === 'new') { replTarget = p; $('#replFile').value = ''; $('#replFile').click(); }
+  } catch (er) { msg(out, er.message || String(er), 'err'); }
+};
+$('#replFile').onchange = async () => {
+  const f = $('#replFile').files[0], p = replTarget, out = $('#listMsg'); if (!f || !p) return;
+  const nv = prompt('New version number for "' + p.name + '"', String((parseInt(p.version, 10) || 1) + 1)); if (!nv) return;
+  try {
+    await fresh(); const path = p.kind + '/' + Date.now() + '-' + safe(f.name);
+    await uploadFile(path, f, x => msg(out, 'Uploading ' + Math.round(x * 100) + '%'));
+    // Replacement uploads are hidden until validation and explicit republishing.
+    const { error } = await sb.from('packs').update({ upload_path: path, file_name: f.name, version: nv.trim() }).eq('id', p.id);
+    if (error) { await sb.storage.from('incoming').remove([path]); throw error; }
+    msg(out, 'Checking…'); const v = await api('/api/public/tm/admin/validate-pack', { id: p.id });
+    $('#preview').innerHTML = renderReport(v.report);
+    msg(out, v.ok ? p.name + ' v' + nv + ' validated. Review the preview and Publish from the list below.' : 'New version rejected — pack hidden until a valid version is uploaded.', v.ok ? 'ok' : 'err'); loadList();
+  } catch (er) { msg(out, er.message || String(er), 'err'); }
+};
+
+/* ---------- APK releases ---------- */
+let releases = [];
+$('#apkSend').onclick = async () => {
+  const f = $('#apkFile').files[0], code = parseInt($('#vcode').value, 10), name = $('#vname').value.trim(), out = $('#apkMsg'), bar = $('#apkProg');
+  if (!(code > 0)) return msg(out, 'Enter a version code (whole number).', 'err'); if (!name) return msg(out, 'Enter a version name.', 'err'); if (!f || !/\.apk$/i.test(f.name)) return msg(out, 'Choose a signed .apk file.', 'err');
+  $('#apkSend').disabled = true; bar.classList.remove('hide');
+  try {
+    await fresh(); const path = 'apk/' + Date.now() + '-' + safe(f.name);
+    await uploadFile(path, f, p => { bar.firstChild.style.width = (p * 100) + '%'; msg(out, 'Uploading ' + Math.round(p * 100) + '%'); });
+    const ins = await sb.from('app_releases').insert({ version_code: code, version_name: name, notes: $('#vnotes').value.trim(), min_sdk: parseInt($('#minsdk').value, 10) || 24, upload_path: path, file_size: f.size, created_by: session.user.id }).select().single();
+    if (ins.error) { await sb.storage.from('incoming').remove([path]); throw ins.error; }
+    msg(out, 'Checking APK…'); const v = await api('/api/public/tm/admin/validate-apk', { id: ins.data.id });
+    msg(out, v.ok ? 'APK valid · SHA-256 ' + v.report.sha256.slice(0, 16) + '… Publish it from the list below.' : 'APK rejected: ' + v.report.issues.join('; '), v.ok ? 'ok' : 'err');
+    loadReleases();
+  } catch (e) { msg(out, e.message || String(e), 'err'); }
+  $('#apkSend').disabled = false; setTimeout(() => { bar.classList.add('hide'); bar.firstChild.style.width = '0'; }, 800);
+};
+async function loadReleases() {
+  const { data, error } = await sb.from('app_releases').select('*').order('version_code', { ascending: false });
+  if (error) return msg($('#apkListMsg'), error.message, 'err'); releases = data; msg($('#apkListMsg'), data.length ? '' : 'No releases yet.');
+  $('#apkRows').innerHTML = data.map(r => `<tr data-id="${r.id}"><td><b>${esc(r.version_name)}</b><br><span class="msg">code ${r.version_code} · SDK ${r.min_sdk}+</span></td><td>${esc(r.notes)}</td><td>${fmt(r.file_size)}</td><td><code style="font-size:11px">${esc((r.sha256 || '').slice(0, 16))}${r.sha256 ? '…' : ''}</code></td>
+    <td>${r.status === 'validated' ? (r.published ? '<span class="tag">Published</span>' : '<span class="tag app">Valid · hidden</span>') : r.status === 'rejected' ? '<span class="tag off">Rejected</span>' : '<span class="tag app">Not checked</span>'}</td><td>${r.download_count}</td>
+    <td class="row" style="flex-wrap:nowrap">${r.upload_path ? '<button class="btn" data-a="check">Check</button>' : ''}<button class="btn" data-a="vis" ${r.status !== 'validated' ? 'disabled' : ''}>${r.published ? 'Unpublish' : 'Publish'}</button><button class="btn danger" data-a="del">Delete</button></td></tr>`).join('');
+}
+$('#apkReload').onclick = loadReleases;
+$('#apkRows').onclick = async e => {
+  const b = e.target.closest('button'); if (!b) return; const r = releases.find(x => x.id === b.closest('tr').dataset.id), out = $('#apkListMsg');
+  try {
+    await fresh();
+    if (b.dataset.a === 'check') { const v = await api('/api/public/tm/admin/validate-apk', { id: r.id }); msg(out, v.ok ? 'Valid' : 'Rejected: ' + v.report.issues.join('; '), v.ok ? 'ok' : 'err'); return loadReleases(); }
+    if (b.dataset.a === 'vis') { const { error } = await sb.from('app_releases').update({ published: !r.published }).eq('id', r.id); if (error) throw error; return loadReleases(); }
+    if (b.dataset.a === 'del') { if (!confirm('Delete release ' + r.version_name + '?')) return; const { error } = await sb.from('app_releases').delete().eq('id', r.id); if (error) throw error; if (r.file_path) await sb.storage.from('packs').remove([r.file_path]); if (r.upload_path) await sb.storage.from('incoming').remove([r.upload_path]); return loadReleases(); }
+  } catch (er) { msg(out, er.message || String(er), 'err'); }
+};
+</script>
+</body>
+</html>
